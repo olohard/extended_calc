@@ -44,19 +44,19 @@ class Normal_calc:
         self.button0 = Button(self.root, text='0', font=self.font, padx=16, command=lambda: self.button_click(0))
         self.button0.grid(row=4, column=0)
 
-        self.button_plus = Button(self.root, text='+', font=self.font, padx=10)
+        self.button_plus = Button(self.root, text='+', font=self.font, padx=10, command=self.addition)
         self.button_plus.grid(row=1, column=3)
 
-        self.button_minus = Button(self.root, text='-', font=self.font, padx=15)
+        self.button_minus = Button(self.root, text='-', font=self.font, padx=15, command=self.subtraction)
         self.button_minus.grid(row=2, column=3)
 
-        self.button_multiply = Button(self.root, text='*', font=self.font, padx=13)
+        self.button_multiply = Button(self.root, text='*', font=self.font, padx=13, command=self.multiplication)
         self.button_multiply.grid(row=3, column=3)
 
-        self.button_divide = Button(self.root, text='/', font=self.font, padx=16)
+        self.button_divide = Button(self.root, text='/', font=self.font, padx=16, command=self.division)
         self.button_divide.grid(row=4, column=3)
 
-        self.button_equal = Button(self.root, text='=', font=self.font, padx=13)
+        self.button_equal = Button(self.root, text='=', font=self.font, padx=13, command=self.equasion)
         self.button_equal.grid(row=4, column=2)
 
         self.button_clear = Button(self.root, text='C', font=self.font, padx=15, command=self.clear)
@@ -69,3 +69,56 @@ class Normal_calc:
 
     def clear(self):
         self.main_entry.delete(0, END)
+
+    def addition(self):
+        global first_number
+        first_number = int(self.main_entry.get())
+
+        global math
+        math = 'add'
+
+        self.main_entry.delete(0, END)
+
+    def subtraction(self):
+        global first_number
+        first_number = int(self.main_entry.get())
+
+        global math
+        math = 'subtract'
+
+        self.main_entry.delete(0, END)
+
+    def multiplication(self):
+        global first_number
+        first_number = int(self.main_entry.get())
+
+        global math
+        math = 'multiplicate'
+
+        self.main_entry.delete(0, END)
+
+    def division(self):
+        global first_number
+        first_number = int(self.main_entry.get())
+
+        global math
+        math = 'divide'
+
+        self.main_entry.delete(0, END)
+
+    def equasion(self):
+        second_number = self.main_entry.get()
+        self.main_entry.delete(0, END)
+
+        if math == "add":
+            self.main_entry.insert(0, first_number + int(second_number))
+
+        if math == "subtract":
+            self.main_entry.insert(0, first_number - int(second_number))
+
+        if math == "multiplicate":
+            self.main_entry.insert(0, first_number * int(second_number))
+
+        if math == "divide":
+            self.main_entry.insert(0, first_number / int(second_number))
+            
